@@ -1,25 +1,19 @@
 import React, { useContext } from 'react'
 import styles from './Robot.module.css'
 import { appContext } from '../AppState'
-import { withAddCart } from './addToCart'
+import { useAddToCart } from './addToCart'
 
-export interface RobotProps {
+interface RobotProps {
   id: number
   name: string
   email: string
-  addToCart: (id, name) => void
 }
 
 //使用props传递组件的数据
-const RobotDiscount: React.FC<RobotProps> = ({
-  id,
-  name,
-  email,
-  addToCart,
-}) => {
+const RobotDiscount: React.FC<RobotProps> = ({ id, name, email }) => {
   // 使用useContext来访问上下文关系对象
   const value = useContext(appContext)
-
+  const addToCart = useAddToCart()
   return (
     <div className={styles.cardContainer}>
       <img src={`https://www.robohash.org/${id}`} alt="" />
@@ -32,4 +26,4 @@ const RobotDiscount: React.FC<RobotProps> = ({
   )
 }
 
-export default withAddCart(RobotDiscount)
+export default RobotDiscount
