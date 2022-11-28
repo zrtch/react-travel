@@ -9,7 +9,7 @@ export const SideMenu: React.FC = () => {
     <Menu mode="vertical" className={styles['side-menu']}>
       {sideMenuList.map((m, index) => (
         <Menu.SubMenu
-          key={`side-index-${index}`}
+          key={`side-menu-${index}`}
           title={
             <span>
               <GifOutlined />
@@ -19,7 +19,7 @@ export const SideMenu: React.FC = () => {
         >
           {m.subMenu.map((sm, smindex) => (
             <Menu.SubMenu
-              key={`side-index-${smindex}`}
+              key={`sub-menu-${smindex}`}
               title={
                 <span>
                   <GifOutlined />
@@ -28,7 +28,7 @@ export const SideMenu: React.FC = () => {
               }
             >
               {sm.subMenu.map((sms, smsindex) => (
-                <Menu.Item key={`side-index-${smsindex}`}>
+                <Menu.Item key={`sub-sub-menu-${smsindex}`}>
                   <span>
                     <GifOutlined />
                     {sms}
