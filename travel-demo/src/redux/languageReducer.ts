@@ -1,18 +1,29 @@
-// 处理语言的reducer；整个reducer就是以旧换新的过程
+import i18n from "i18next";
 
-interface LanguageState{
-  language: 'en'|'zh',
-  languageList:{name: string, code: string}[]
+export interface LanguageState {
+  language: "en" | "zh";
+  languageList: { name: string; code: string }[];
 }
-// 初始化state
+
 const defaultState: LanguageState = {
-  language:'zh',
-  languageList:[
-    {name:'中文',code:'zh'},
-    {name:'English',code:'en'}
-  ]
-}
+  language: "zh",
+  languageList: [
+    { name: "中文", code: "zh" },
+    { name: "English", code: "en" },
+  ],
+};
 
-export default (state = defaultState, action) => {//利用参数传入的state，经过数据变化生成新的数据；action则是指挥reducer做出数据变换的指令
-  return state
-}
+export default (state = defaultState, action) => {
+  switch (action.type) {
+    case "change_language":
+      i18n.changeLanguage(action.payload) // 这样处理是不标准的，有副作用
+      return { ...state, language: action.payload };
+    case "add_language":
+      return {
+        ...state,
+        languageList: [...state.languageList, action.payload],
+      };
+    default:
+      return state;
+  }
+};

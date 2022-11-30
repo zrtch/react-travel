@@ -9,8 +9,25 @@ import {
   useParams,
   useSearchParams,
 } from 'react-router-dom'
+import store from '../../redux/store'
+import { useTranslation } from 'react-i18next'
 
 export const Header: React.FC = () => {
+  const { t } = useTranslation()
+
+  const storeState = store.getState()
+  const state = {
+    language: storeState.language,
+    languageList: storeState.languageList,
+  }
+  const handleStoreChange = () => {
+    const storestate = store.getState()
+    state.language = storestate.language
+    state.languageList = storestate.languageList
+  }
+  // 订阅函数
+  store.subscribe(handleStoreChange)
+
   // 导航操作，可以取得history的数据
   const navigate = useNavigate()
   // 当前路径的信息，可以获得location的数据
@@ -20,28 +37,52 @@ export const Header: React.FC = () => {
   // 可以获得url匹配的数据
   const match = useSearchParams()
 
+  const menuClickHandler = (e) => {
+    if (e.key === 'new') {
+      // 处理新语言添加action
+      const action = {
+        type: 'add_language',
+        payload: { code: 'new_language', name: '新语言' },
+      }
+      store.dispatch(action)
+    } else {
+      // 消息分发
+      const action = {
+        type: 'change_language',
+        payload: e.key,
+      }
+      store.dispatch(action)
+    }
+  }
+
   return (
     <div className={styles.App}>
       <div className={styles['app-header']}>
         {/* top-header */}
         <div className={styles['top-header']}>
           <div className={styles.inner}>
-            <Typography.Text>让旅游更幸福</Typography.Text>
+            <Typography.Text>{t('header.slogan')}</Typography.Text>
             <Dropdown.Button
               style={{ marginLeft: 15, display: 'inline' }}
               overlay={
-                <Menu>
-                  <Menu.Item>中文</Menu.Item>
-                  <Menu.Item>English</Menu.Item>
+                <Menu onClick={menuClickHandler}>
+                  {state.languageList.map((l) => {
+                    return <Menu.Item key={l.code}>{l.name}</Menu.Item>
+                  })}
+                  <Menu.Item key={'new'}>添加新语言</Menu.Item>
                 </Menu>
               }
               icon={<GlobalOutlined />}
             >
-              语言
+              {state.language === 'zh' ? '中文' : 'English'}
             </Dropdown.Button>
             <Button.Group className={styles['button-group']}>
-              <Button onClick={() => navigate('register')}>注册</Button>
-              <Button onClick={() => navigate('signIn')}>登陆</Button>
+              <Button onClick={() => navigate('register')}>
+                {t('header.register')}
+              </Button>
+              <Button onClick={() => navigate('signIn')}>
+                {t('header.signin')}
+              </Button>
             </Button.Group>
           </div>
         </div>
@@ -49,7 +90,7 @@ export const Header: React.FC = () => {
           <span onClick={() => navigate('/')}>
             <img src={logo} alt="logo" className={styles['App-logo']} />
             <Typography.Title level={3} className={styles.title}>
-              React旅游网
+              {t('header.title')}
             </Typography.Title>
           </span>
           <Input.Search
@@ -58,22 +99,22 @@ export const Header: React.FC = () => {
           />
         </Layout.Header>
         <Menu mode={'horizontal'} className={styles['main-menu']}>
-          <Menu.Item key={1}>旅游首页</Menu.Item>
-          <Menu.Item key={2}>周末游</Menu.Item>
-          <Menu.Item key={3}>跟团游</Menu.Item>
-          <Menu.Item key="4"> 自由行 </Menu.Item>
-          <Menu.Item key="5"> 私家团 </Menu.Item>
-          <Menu.Item key="6"> 邮轮 </Menu.Item>
-          <Menu.Item key="7"> 酒店+景点 </Menu.Item>
-          <Menu.Item key="8"> 当地玩乐 </Menu.Item>
-          <Menu.Item key="9"> 主题游 </Menu.Item>
-          <Menu.Item key="10"> 定制游 </Menu.Item>
-          <Menu.Item key="11"> 游学 </Menu.Item>
-          <Menu.Item key="12"> 签证 </Menu.Item>
-          <Menu.Item key="13"> 企业游 </Menu.Item>
-          <Menu.Item key="14"> 高端游 </Menu.Item>
-          <Menu.Item key="15"> 爱玩户外 </Menu.Item>
-          <Menu.Item key="16"> 保险 </Menu.Item>
+          <Menu.Item key={1}>{t('header.home_page')}</Menu.Item>
+          <Menu.Item key={2}>{t('header.weekend')}</Menu.Item>
+          <Menu.Item key={3}>{t('header.group')}</Menu.Item>
+          <Menu.Item key="4"> {t('header.backpack')} </Menu.Item>
+          <Menu.Item key="5"> {t('header.private')} </Menu.Item>
+          <Menu.Item key="6"> {t('header.cruise')} </Menu.Item>
+          <Menu.Item key="7"> {t('header.hotel')} </Menu.Item>
+          <Menu.Item key="8"> {t('header.local')} </Menu.Item>
+          <Menu.Item key="9"> {t('header.theme')} </Menu.Item>
+          <Menu.Item key="10"> {t('header.custom')} </Menu.Item>
+          <Menu.Item key="11"> {t('header.study')} </Menu.Item>
+          <Menu.Item key="12"> {t('header.visa')} </Menu.Item>
+          <Menu.Item key="13"> {t('header.enterprise')} </Menu.Item>
+          <Menu.Item key="14"> {t('header.high_end')} </Menu.Item>
+          <Menu.Item key="15"> {t('header.outdoor')} </Menu.Item>
+          <Menu.Item key="16"> {t('header.insurance')} </Menu.Item>
         </Menu>
       </div>
     </div>
