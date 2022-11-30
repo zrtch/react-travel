@@ -11,6 +11,10 @@ import {
 } from 'react-router-dom'
 import store from '../../redux/store'
 import { useTranslation } from 'react-i18next'
+import {
+  changeLanguageActionCreator,
+  addLanguageActionCreator,
+} from '../../redux/language/languageActions'
 
 export const Header: React.FC = () => {
   const { t } = useTranslation()
@@ -40,17 +44,11 @@ export const Header: React.FC = () => {
   const menuClickHandler = (e) => {
     if (e.key === 'new') {
       // 处理新语言添加action
-      const action = {
-        type: 'add_language',
-        payload: { code: 'new_language', name: '新语言' },
-      }
+      const action = addLanguageActionCreator('新语言', 'new_lang')
       store.dispatch(action)
     } else {
       // 消息分发
-      const action = {
-        type: 'change_language',
-        payload: e.key,
-      }
+      const action = changeLanguageActionCreator(e.key)
       store.dispatch(action)
     }
   }
