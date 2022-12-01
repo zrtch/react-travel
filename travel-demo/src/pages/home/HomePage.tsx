@@ -14,14 +14,14 @@ import sideImage from '../../assets/images/sider_2019_12-09.png'
 import sideImage2 from '../../assets/images/sider_2019_02-04.png'
 import sideImage3 from '../../assets/images/sider_2019_02-04-2.png'
 import { withTranslation, WithTranslation } from 'react-i18next'
+import { MainLayout } from '../../layouts/mainLayout'
 
 class HomePageComponent extends React.Component<WithTranslation> {
   render() {
     const { t } = this.props
     return (
       <>
-        <Header />
-        <div className={styles['page-content']}>
+        <MainLayout>
           <Row style={{ marginTop: 20 }}>
             <Col span={6}>
               <SideMenu />
@@ -58,8 +58,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
             products={productList3}
           />
           <BusinessPartners />
-        </div>
-        <Footer />
+        </MainLayout>
       </>
     )
   }
