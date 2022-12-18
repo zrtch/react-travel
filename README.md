@@ -266,7 +266,7 @@ handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
 #### 获取网络API数据
 
-免费API地址：[http://jsonplaceholder.typicode.com/users](http://jsonplaceholder.typicode.com/users)<br />对any的理解
+免费API地址：[http://jsonplaceholder.typicode.com/users](http://jsonplaceholder.typicode.com/users)<br />对 any的理解
 
 - 资源来源于网络请求，返回的数据类型不受控制
 - 前端强行定义API数据类型，违反前后端分离的原则
