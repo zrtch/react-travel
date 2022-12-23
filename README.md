@@ -7,7 +7,7 @@
 
 ### React 与 Typescript
 
-2010 第一代 AngularJS与MVC 出现
+2010 第一代 AngularJS与 MVC 出现
 
 - 双向数据绑定
 - 网站运行速度缓慢
