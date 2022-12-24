@@ -27,7 +27,7 @@ React的设计理念
   - 单向渲染
   - 就好像一个函数，同样的输入，同样的输出
 - 虚拟DOM
-  - 类似Docker或VMware的Snapshot快照技术
+  - 类似 Docker或VMware的Snapshot快照技术
 - 组件化
   - 保持交互一致性
   - 保持视觉风格的统一
