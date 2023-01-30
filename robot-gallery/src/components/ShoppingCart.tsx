@@ -28,10 +28,6 @@ class ShoppingCart extends React.Component<Props, State> {
     }
   }
 
-  deleteClick = () => {
-    console.log(11)
-  }
-
   render() {
     return (
       <appContext.Consumer>
@@ -52,7 +48,6 @@ class ShoppingCart extends React.Component<Props, State> {
                       <span>
                         {index + 1}.{item.name}
                       </span>
-                      <span onClick={this.deleteClick}>×</span>
                     </li>
                   ))}
                 </ul>
