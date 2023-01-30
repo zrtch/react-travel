@@ -30,6 +30,15 @@
   border-bottom: 0;
 }
 
+.items{
+  display: flex;
+  justify-content: space-between;
+}
+.items span{
+  display: inline-block;
+  cursor: pointer;
+}
+
 .button {
   background: none;
   border: none;

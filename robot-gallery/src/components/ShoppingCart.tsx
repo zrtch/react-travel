@@ -28,6 +28,10 @@ class ShoppingCart extends React.Component<Props, State> {
     }
   }
 
+  deleteClick = () => {
+    console.log(11)
+  }
+
   render() {
     return (
       <appContext.Consumer>
@@ -43,8 +47,13 @@ class ShoppingCart extends React.Component<Props, State> {
                 style={{ display: this.state.isOpen ? 'block' : 'none' }}
               >
                 <ul>
-                  {value.shoppingCart.items.map((item) => (
-                    <li>{item.name}</li>
+                  {value.shoppingCart.items.map((item, index) => (
+                    <li className={styles.items}>
+                      <span>
+                        {index + 1}.{item.name}
+                      </span>
+                      <span onClick={this.deleteClick}>×</span>
+                    </li>
                   ))}
                 </ul>
               </div>
