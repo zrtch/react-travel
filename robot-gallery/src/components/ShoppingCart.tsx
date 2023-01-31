@@ -45,9 +45,7 @@ class ShoppingCart extends React.Component<Props, State> {
                 <ul>
                   {value.shoppingCart.items.map((item, index) => (
                     <li className={styles.items}>
-                      <span>
-                        {index + 1}.{item.name}
-                      </span>
+                      {index + 1}.{item.name}
                     </li>
                   ))}
                 </ul>

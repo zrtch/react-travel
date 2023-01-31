@@ -30,13 +30,6 @@
   border-bottom: 0;
 }
 
-.items{
-  display: flex;
-  justify-content: space-between;
-}
-.items span{
-  display: inline-block;
-}
 
 .button {
   background: none;
