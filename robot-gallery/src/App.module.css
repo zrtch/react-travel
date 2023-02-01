@@ -16,6 +16,10 @@
   pointer-events: none;
 }
 
+.count{
+  margin-left: 4px;
+}
+
 h1{
   font-family:'Slidefu';
   font-size: 72px;

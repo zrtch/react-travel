@@ -47,13 +47,13 @@ const App: React.FC = (props) => {
       >
         Click
       </button>
-      <span>Count： {count}</span>
+      <span className={styles.count}>Count：{count}</span>
       <ShoppingCart />
       {!error || (error !== '' && <div>网站出错：{error}</div>)}
       {!loading ? (
         <div className={styles.robotList}>
           {robotGallery.map((r, index) =>
-            index % 2 == 0 ? (
+            index % 2 === 0 ? (
               <RobotDiscount id={r.id} email={r.email} name={r.name} />
             ) : (
               <Robot id={r.id} email={r.email} name={r.name} />
