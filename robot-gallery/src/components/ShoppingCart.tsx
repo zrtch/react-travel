@@ -4,13 +4,13 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { appContext } from '../AppState'
 
 interface Props {}
-//组件自己的状态
+// 组件自己的状态
 interface State {
   isOpen: boolean
 }
 
 class ShoppingCart extends React.Component<Props, State> {
-  //继承React.Component
+  // 继承React.Component
   constructor(props: Props) {
     super(props)
     this.state = {
@@ -22,7 +22,7 @@ class ShoppingCart extends React.Component<Props, State> {
   handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e.target)
     console.log(e.currentTarget)
-    //点击span元素下拉菜单正常，点击icon就无效
+    // 点击span元素下拉菜单正常，点击icon就无效
     if ((e.target as HTMLElement).nodeName === 'SPAN') {
       this.setState({ isOpen: !this.state.isOpen })
     }

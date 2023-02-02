@@ -9,7 +9,7 @@ export interface RobotProps {
   addToCart: (id, name) => void
 }
 
-//使用props传递组件的数据
+// 使用props传递组件的数据
 const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   // 使用useContext来访问上下文关系对象
   const value = useContext(appContext)
