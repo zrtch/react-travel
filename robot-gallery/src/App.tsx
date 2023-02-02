@@ -53,7 +53,7 @@ const App: React.FC = (props) => {
       {!loading ? (
         <div className={styles.robotList}>
           {robotGallery.map((r, index) =>
-            index % 2 == 0 ? (
+            index % 2 === 0 ? (
               <RobotDiscount id={r.id} email={r.email} name={r.name} />
             ) : (
               <Robot id={r.id} email={r.email} name={r.name} />
