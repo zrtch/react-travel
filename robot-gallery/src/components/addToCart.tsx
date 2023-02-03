@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { appSetStateContext } from '../AppState'
 import { RobotProps } from './Robot'
 
-// 高阶组件
+// 高阶组件用法
 export const withAddCart = (
   ChildComponent: React.ComponentType<RobotProps>
 ) => {
