@@ -16,7 +16,7 @@ const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
 
   return (
     <div className={styles.cardContainer}>
-      <img src={`https://www.robohash.org/${id}`} alt="" />
+      <img src={`https://www.robohash.org/${id}?set=set2`} alt="" />
       <h2>{name}</h2>
       <p>{email}</p>
       <p>作者：{value.username}</p>
