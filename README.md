@@ -5,7 +5,7 @@
 - [https://github.com/search?q=react%E6%97%85%E6%B8%B8%E7%BD%91&type=Repositories](https://github.com/search?q=react%E6%97%85%E6%B8%B8%E7%BD%91&type=Repositories)
 
 
-### React 与 Typescript
+### React 与 Typescript 
 
 2010 第一代 AngularJS 与 MVC 出现
 
