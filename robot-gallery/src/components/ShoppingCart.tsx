@@ -9,6 +9,8 @@ interface State {
   isOpen: boolean
 }
 
+console.log('父亲组件触发')
+
 class ShoppingCart extends React.Component<Props, State> {
   // 继承React.Component
   constructor(props: Props) {

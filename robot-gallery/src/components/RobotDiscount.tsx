@@ -3,6 +3,8 @@ import styles from './Robot.module.css'
 import { appContext } from '../AppState'
 import { useAddToCart } from './addToCart'
 
+console.log('孙子组件触发')
+
 interface RobotProps {
   id: number
   name: string

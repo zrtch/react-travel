@@ -10,9 +10,11 @@ const App: React.FC = (props) => {
   const [robotGallery, setRobotGallery] = useState<any>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
+
   //传入一个匿名函数，每次ui渲染，状态改变 useEffect都会执行
   useEffect(() => {
     document.title = `点击${count}次`
+    console.log('爷爷组件触发')
   }, [count])
 
   useEffect(() => {
